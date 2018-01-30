@@ -29,4 +29,8 @@ Route::prefix('slamer')->group(function () {
 });
 Auth::routes();
 
+Route::resource('player', 'PlayerController', ['only' => [
+		'index', 'show', 'create'
+]]);
+
 Route::get('/home', 'HomeController@index')->name('home');
