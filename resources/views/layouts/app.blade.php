@@ -56,6 +56,9 @@
                                         <a href="{{ route('profile') }}">
                                             Profile
                                         </a>
+                                        <a href="{{ route('player.index') }}">
+                                            Players
+                                        </a>
                                         <a href="{{ route('settings') }}">
                                             Settings
                                         </a>

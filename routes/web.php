@@ -37,8 +37,8 @@ Route::prefix('profile')->group(function () {
     Route::get('/settings', 'Profile@settings')->name('settings');
 });
 
-Route::resource('player', 'PlayerController', ['only' => [
-		'index', 'show', 'create'
+Route::resource('player', 'PlayerController', ['except' => [
+		'update', 'edit'
 ]]);
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePlayer;
 use App\Models\Player;
+use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class PlayerController extends Controller
 {
@@ -25,7 +29,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+	    return view('player.create');
     }
 
     /**
@@ -34,9 +38,18 @@ class PlayerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePlayer $request)
     {
-        //
+	    $player = new Player();
+	    $player->name = $request->get('name');
+	    $player->age = $request->get('age');
+	    $player->skills = $request->get('skills');
+	    $player->user_id = Auth::id();
+	    $player->save();
+
+	    // redirect
+	    flash('Player created!')->success();
+	    return redirect(route('player.index'));
     }
 
     /**

@@ -10,6 +10,7 @@
                 <div class="panel-heading">Игроки</div>
 
                 <div class="panel-body">
+                    @include('flash::message')
                     <table class="table">
                         <thead class="thead-inverse">
                         <tr>
@@ -23,8 +24,9 @@
                             @forelse($players as $player)
                                 @include('templates.players.player', ['player', $player, 'i' => $i++])
                             @empty
-                            <tr><td colspan="4">No players yet</td></tr>
+                                <tr><td colspan="4">No players yet</td></tr>
                             @endforelse
+                            <tr><td colspan="4"><a href="{{ route('player.create') }}">Add Player</a></td></tr>
                         </tbody>
                     </table>
                 </div>
