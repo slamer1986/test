@@ -26,7 +26,14 @@ Route::prefix('slamer')->group(function () {
         echo $data;
 
     });
-});
-Auth::routes();
+    Route::get('test', function () {
+        return view('test');
+        //debugbar(App());
 
-Route::get('/home', 'HomeController@index')->name('home');
+    });
+});
+Route::prefix('profile')->group(function () {
+    Route::get('/', 'Profile@showProfile')->name('profile');
+    Route::get('/settings', 'Profile@settings')->name('settings');
+});
+
