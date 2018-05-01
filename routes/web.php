@@ -45,4 +45,5 @@ Route::resource('player', 'PlayerController',
 );
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/mongo', 'MongoController@mongo')->name('mongo');
 
